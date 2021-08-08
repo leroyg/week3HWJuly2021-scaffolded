@@ -27,6 +27,8 @@ body {
 .container {
     align-items: center;
     margin-top: 8px;
+    display: flex;
+    flex-direction: column; /* The previous two lines implement the flexbox code so the html can be rendered correctly */
 }
 
 ul > li {
