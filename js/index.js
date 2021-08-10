@@ -36,22 +36,23 @@ function startGame() {
   // Invoke shuffle function and store in variable
   const shuffledDeck = shuffle(deckCards);
   // Implement a for loop on the shuffledDeck array
-  
+  for (let count = 0; count < shuffledDeck.length; count++) {
     // Create the <td> tags and assign it to a variable called tdTag
-    
+    let tdTag = document.createElement("td");
     // Give tdTag Element a class of card
-    
+    tdTag.className = "card";
     // Create the <img> tag and assign it to an addImage variable
-    
+    let addImage = document.createElement("img");
     // make the addImage a child of the tdTag
-    
+    tdTag.appendChild(addImage);
     // Set the addImage element src path with the shuffled deck
     // TODO: replace the REPLACE ME string with the element in the shuffledDeck array at index i
-    addImage.setAttribute('src', 'img/' + 'REPLACE ME with the element in shuffleDeck at index i');
+    addImage.setAttribute('src', 'img/' + shuffledDeck[count]);
     // Add an alt tag to the addImage element
     addImage.setAttribute('alt', 'image of vault boy from fallout');
     // make the tdTag element a child of the deck element
-    
+    deck.appendChild(tdTag);
+  }
 }
 
 startGame();
@@ -133,18 +134,21 @@ function compareTwo() {
   // Compare the two images src in the opened array
   // TODO: implement
   // if the opened array has a length of two && the element at index = 0 src string
+  if (opened.length === 2 && opened[0].src === opened[1].src) {
   // equals the element at index 1 src string
   // the image srcs match
-  
     // TODO: Invoke the displayMatchingCards()
-    // TODO: console log "It's a Match!"  
-    
-    
-  // TODO: if the image src's do not match
-  
+    displayMatchingCards();
+    // TODO: console log "It's a Match!" 
+    console.log("It's a Match!");
+  } else if (opened.length === 2 && opened[0].src !== opened[1].src) {
+ // TODO: if the image src's do not match
+    displayNotMatchingCards();
     // TODO: invoke the displayNotMatchingCards()
+    console.log("No Match!");
     // TODO: console log "No Match!"
-  
+  }
+
 }
 
 // TODO:
