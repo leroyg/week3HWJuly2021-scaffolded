@@ -162,11 +162,12 @@ function displayMatchingCards() {
     opened[0].parentElement.classList.add("match");
     opened[1].parentElement.classList.add("match");
     // TODO: Push the flipped cards (opened[0] and opened[1]) to the matched array
-    
+    matched.push(opened[0])
+    matched.push(opened[1])
     // Allow for further mouse clicks on cards
     document.body.style.pointerEvents = "auto";
     // TODO: invoke the checkIsGameFinished function
-    
+    checkIsGameFinished();
    
     // Clear the opened array
     opened = [];
@@ -199,15 +200,16 @@ function addStatsToModal() {
   // Create three different paragraphs
   for (let i = 1; i <= 3; i++) {
     // Create a new Paragraph
+    const statsElement = document.createElement('p');
     // TODO: create p tag and assign it a newly created statsElement variable
     
     // Add a class to the new Paragraph
     // TODO: add the stats class to the statsElement
-    
+    statsElement.classList.add('stats');
     
     // Add the new created <p> tag to the modal content
     // TODO: add the statsElement as a child of the statsParent element
-    
+    statsParent.append(statsElement);
   }
   // Select all p tags with the class of stats and update the content
   let p = statsParent.querySelectorAll("p.stats");
@@ -221,16 +223,15 @@ function addStatsToModal() {
 // TODO: Implement the pseudocode
 function displayModal() {
 // use getElementByID to grab the id="close" element and assign it to a variable called modalClose
-
+let modalClose = document.getElementById("close");
 // use getElementByID to grab the id="modal" element and assign it to a variable called modal
-
+let modal = document.getElementById("modal");
 // Set modal to display block to show it
-
-
+modal.style.display = "block";
 // When the user clicks on the modalClose <span> (x), 
 modalClose.onclick = function() {
     // set modal to diplay none
-    
+    modal.style.display = "none";
 };
 // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
@@ -248,14 +249,14 @@ function checkIsGameFinished() {
   if (matched.length === 16) {
     // stop the game
     //TODO: invoke the stopTime function
-    
+    stopTime();
     // tally stats
     // TODO: invoke the addStatsToModal
-    
+    addStatsToModal();
     
     // display modal
     // TODO: invoke the displayModal function
-    
+    displayModal();
     
   }
 }

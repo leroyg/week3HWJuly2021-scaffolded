@@ -109,7 +109,7 @@ Section - Modal
 ------------------------------------*/
 
 /* Modal (background) */
-.modal {
+#modal {
     /*Hidden by default */
     display: block;
     width: 100%;
